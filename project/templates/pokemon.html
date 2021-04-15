@@ -1,0 +1,14 @@
+{% extends 'base.html' %} 
+
+{% block content %} 
+<br><br><br>
+    <div class="container">
+        <h1>{{ name }}</h1>
+        <br><br>
+        <ul class="list list-group">
+            {% for i in abilities %} 
+                <li class="list-group-item text-center">{{ i }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}
