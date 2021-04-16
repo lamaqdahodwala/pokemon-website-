@@ -1,0 +1,17 @@
+django
+asgiref
+django_heroku
+urllib3
+whitenoise
+sqlparse
+six
+requests
+pytz
+psycopg2
+inflect
+idna
+django-crispy-forms
+chardet
+dj-database-url
+certifi
+beckett
