@@ -5,7 +5,7 @@
         <br><br>
         <h1 class='text-success'>Searching via Pokedex ID</h1>
         <br><br><br><br>
-        <form action="id" method="post">
+        <form action="findpokemon" method="GET">
             {% csrf_token %}
             <label for="id-input" class='text-lg-center'>Pokedex ID</label><br><br>
             <input type="text" name="id-input" id="id-input" class='form-control' placeholder="Type the ID here!"><br><br>

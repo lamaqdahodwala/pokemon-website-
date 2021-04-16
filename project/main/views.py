@@ -1,24 +1,32 @@
 from django.shortcuts import render, redirect
 import requests
-import django
+import django.http
+from django.core.handlers.wsgi import WSGIRequest
 import json
 
 # Create your views here.
-def index(req):
+def index(req:WSGIRequest):
     return render(req, 'index.html')
 
 
-def byId(req):
+def byId(req:WSGIRequest):
     if  req.method == 'POST':
         post = req.POST or None
         if post:
             poke_id = post['id-input']
-            return redirect(req, 'pokemon')
+            return redirect(req, 'pokemon.html')
         else:
             return redirect('index')
     return render(req, 'byid.html')
 
-def byName(req):
+def findpokemon(req:WSGIRequest):
+    id = req.GET.get('id-input')
+    if id is None:
+        return django.http.HttpResponse('Please provide an ID')
+    else:
+        return redirect(f'pokemon/{id}')
+
+def byName(req:WSGIRequest):
     if req.method == 'POST':
         post = req.POST or None
         if post:
