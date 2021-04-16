@@ -5,5 +5,6 @@ urlpatterns = [
     path('id', views.byId, name='byid'),
     path('name', views.byName, name='byname'),
     path('pokemon/<int:id>', views.pokemon, name='pokemon'),
-    path('findpokemon', views.findpokemon, name='findit')
+    path('findpokemon', views.findpokemon, name='findit'),
+    path('findpokemonbyname', views.findpokemonbyname, name='findbyname')
 ]

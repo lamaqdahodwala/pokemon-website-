@@ -26,6 +26,16 @@ def findpokemon(req:WSGIRequest):
     else:
         return redirect(f'pokemon/{id}')
 
+def findpokemonbyname(req:WSGIRequest):
+    name = req.GET.get('name-input')
+    if name is None:
+        return django.http.HttpResponse("Please provide a name")
+    else:
+        data = requests.get(f'https://pokeapi.co/api/v2/pokemon/{name.lower()}')
+        idcont = json.loads(data.text)
+        return redirect(f'pokemon/{idcont["id"]}')
+    
+
 def byName(req:WSGIRequest):
     if req.method == 'POST':
         post = req.POST or None
