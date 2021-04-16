@@ -33,5 +33,5 @@ def pokemon(req, id):
     basexp = data['base_experience']
     name = data['forms'][0]['name'].title()
     moves = data['moves']
-
-    return render(req, 'pokemon.html', {'abilities': abilities, 'basexp': basexp, 'name': name})
+    movenames = [i['move']['name'] for i in moves]
+    return render(req, 'pokemon.html', {'abilities': abilities, 'basexp': basexp, 'name': name, 'moves':moves})
