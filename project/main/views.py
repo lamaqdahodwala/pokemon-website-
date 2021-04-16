@@ -4,11 +4,11 @@ import django
 import json
 
 # Create your views here.
-def index(req:django.core.handlers.wsgi.WSGIRequest):
+def index(req):
     return render(req, 'index.html')
 
 
-def byId(req:django.core.handlers.wsgi.WSGIRequest):
+def byId(req):
     if  req.method == 'POST':
         post = req.POST or None
         if post:
@@ -18,7 +18,7 @@ def byId(req:django.core.handlers.wsgi.WSGIRequest):
             return redirect('index')
     return render(req, 'byid.html')
 
-def byName(req:django.core.handlers.wsgi.WSGIRequest):
+def byName(req):
     if req.method == 'POST':
         post = req.POST or None
         if post:
@@ -34,4 +34,4 @@ def pokemon(req, id):
     name = data['forms'][0]['name'].title()
     moves = data['moves']
     movenames = [i['move']['name'] for i in moves]
-    return render(req, 'pokemon.html', {'abilities': abilities, 'basexp': basexp, 'name': name, 'moves':moves})
+    return render(req, 'pokemon.html', {'abilities': abilities, 'basexp': basexp, 'name': name, 'moves':movenames})
